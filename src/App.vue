@@ -1,28 +1,39 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <!-- 直接展现的是占位符，而不是home或者其他大组件 -->
+    <keep-alive exclude="Detail">
+      <router-view></router-view>
+    </keep-alive>
+     
+     <main-tab-bar class="maintabbar"></main-tab-bar>
+  
+   
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
+import MainTabBar from 'components/content/mainTabBar/MainTabBar.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    MainTabBar,
+ 
   }
 }
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+
+
+<style  scoped>
+/* 在这个style标签中就这么使用 */
+@import 'assets/css/base.css';
+.maintabbar{
+  /* 用来解决底部导航被一些重叠权重大的所覆盖 */
+  position: relative;
+  z-index: 10;
+
 }
 </style>
+
